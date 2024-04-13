@@ -1,0 +1,11 @@
+alias: MediaAuto-Reboot-Apples-and-Set-First-Play
+description: ""
+trigger:
+  - platform: time
+    at: "05:30:00"
+condition: []
+action:
+  - service: script.mediascript_appletv1_reboot_sources
+    metadata: {}
+    data: {}
+mode: single
