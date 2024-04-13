@@ -1,4 +1,4 @@
-Home Assistant - AppleTv - Restart / Reboot Apple Tv and select something to watch by default
+## Home Assistant - AppleTv - Restart / Reboot Apple Tv and select something to watch by default ##
     
 # Description
 
