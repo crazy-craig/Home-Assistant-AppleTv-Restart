@@ -1,0 +1,14 @@
+alias: MediaAuto-AppleTv1-Reload-If-Unavailable
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - media_player.apple_1
+    to: unavailable
+condition: []
+action:
+  - service: homeassistant.reload_config_entry
+    data: {}
+    target:
+      entity_id: media_player.apple_1
+mode: single
