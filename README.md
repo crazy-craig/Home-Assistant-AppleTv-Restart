@@ -15,17 +15,17 @@ The problems with AppleTV are the following:
 3. So by restarting the Apple Tv will reset all apps to their default focus location and then you can navigate using Left / Right / Up / Down / Select or Call an app with a playlist directly while you are sleeping so it will have time to start properly
 
 ⠀
-# Main Issues to over come
+## Main Issues to over come
 
 1. First issue is rebooting the Apple Tv outside of home assistant can cause the Home Assistant Device Integration to be "unavailable" so we will have to check for "unavailable" and reload it if necessary.
 2. Issue two really comes down to timing. Since I am rebooting at 5:30am, while I am asleep, I have put in long pauses ({}Waits) so it has plenty of time to recover.
 
 ⠀
-# My Configuration for this
+## My Configuration for this
 
 My configuration is 3 - 4K Gen-2 AppleTv's, running YouTubeTv. I want Apple Tv 1 to start up playing the live news, Apple Tv 2 to start up playing Weather using Fox Weather App, and Apple Tv 3 to start at the main menu.
 
-# This is my process for achieving a smooth reboot
+## This is my process for achieving a smooth reboot
 
 ( Currently I have all 3 Apple Tv's plugged into 1 Lutron Plug-In Wall Switch. In the future I plan to separate them if I am pulling an all nighter I can either disable 1 from rebooting or if it is in the middle of playing a movie to not reboot)
 
@@ -53,12 +53,12 @@ My configuration is 3 - 4K Gen-2 AppleTv's, running YouTubeTv. I want Apple Tv 1
 	1. Open FOX Weather using service: media_player.play_media.
 
 ⠀
-**Automation for each Apple Tv make sure Apple Tv reloads properly**
+## Automation for each Apple Tv make sure Apple Tv reloads properly
 1. Trigger (When) - state is unavailable
 2. Call a service "Home Assistant Core Integration: Reload config entry" for your AppleTv
 
 ⠀
-**Automation to reload device/integration if needed**
+## Automation to reload device/integration if needed
 
 ```
 alias: MediaAuto-AppleTv1-Reload-If-Unavailable
@@ -77,7 +77,7 @@ action:
 mode: single
 ```
 
-**Automation to start my reboot script**
+## Automation to start my reboot script**
 
 ```
 alias: MediaAuto-1-Reboot-Apples-and-Set-First-Play
@@ -93,7 +93,7 @@ action:
 mode: single
 ```
 
-**Here is my Script for rebooting 3 Apple Tv's and setting them to New and Weather**
+## Here is my Script for rebooting 3 Apple Tv's and setting them to New and Weather
 
 ```
 alias: MediaScript-AppleTv1-Reboot-Sources
@@ -175,7 +175,7 @@ sequence:
 mode: single
 ```
 
-**RELATED LINKS FOR RESEARCH**
+## RELATED LINKS FOR RESEARCH
 
 This link has information checking status of multiple entities that looks really cool
 [https://github.com/home-assistant/core/issues/90166#issuecomment-1482487713](https://github.com/home-assistant/core/issues/90166#issuecomment-1482487713)
