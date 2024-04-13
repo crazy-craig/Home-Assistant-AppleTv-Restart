@@ -1,0 +1,77 @@
+alias: MediaScript-AppleTv1-Reboot-Sources
+sequence:
+  - type: turn_off
+    device_id: 11184c54311314ab0a630539cfb6025c
+    entity_id: e2f9cb3c89314fc13e3b25b7b4c08ce5
+    domain: light
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - type: turn_on
+    device_id: 11184c54311314ab0a630539cfb6025c
+    entity_id: e2f9cb3c89314fc13e3b25b7b4c08ce5
+    domain: light
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - type: turn_on
+    device_id: 2d2ec7255402b0b763366f5afb44b3a5
+    entity_id: 6a21902627b4c2410070dbeb9ab02d46
+    domain: remote
+    enabled: true
+  - type: turn_on
+    device_id: 82d8d0a456c33399ae3d33d731da6af1
+    entity_id: e6692e9b46afef6040aef50b1965a951
+    domain: remote
+  - type: turn_on
+    device_id: fde0e3d2c718c83f0a04f40414bd0c61
+    entity_id: 7cd4497a650c2919c8eeebd6b48003ff
+    domain: remote
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - service: remote.send_command
+    data:
+      delay_secs: 6
+      command:
+        - select
+        - up
+        - select
+    target:
+      device_id:
+        - 2d2ec7255402b0b763366f5afb44b3a5
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.apple_2
+    data:
+      media_content_id: com.fox.weather
+      media_content_type: app
+    metadata:
+      title: FOX Weather
+      thumbnail: null
+      media_class: app
+      children_media_class: null
+      navigateIds:
+        - {}
+        - media_content_type: apps
+          media_content_id: apps
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: remote.send_command
+    data:
+      delay_secs: 6
+      command:
+        - select
+    target:
+      device_id:
+        - 82d8d0a456c33399ae3d33d731da6af1
+mode: single
