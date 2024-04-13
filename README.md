@@ -1,15 +1,16 @@
-
-# AppleTv - Restart / Reboot Apple Tv and select something to watch by default
+Home Assistant - AppleTv - Restart / Reboot Apple Tv and select something to watch by default
     
 # Description
 
-Home Assistant - Reboot Apple Tv's so they return to their main menu every morning and then start live news consistently. This method for Home Assistant will reboot the Apple TV at 5:30am and set it the live news consistently.
+Home Assistant - Reboot Apple Tv's so they return to their main menu every morning and then start live news consistently. This method for Home Assistant will reboot the Apple TV at 5:30am and set it to the live news consistently.
+
+![](After%20Complete%20Restart%20Automation.PNG)
 
 # Why I did it in this method
 
-The problems with AppleTV are the following
-1. The main problem is you never know where the focus is in an app so using the Left / Right / Up / Down / Select commands fail because you never know where the app when opened will be focused on. So rebooting the Apple Tv puts you back to the same place every time.
-2. Calling an app directly in a script can give you a blank screen some times that you can not recover from. Doing it once is fine but switching back and forth confuses the Apple Tv especially if you hit menu while it is loading.
+The problems with AppleTV are the following:
+1. The main problem is you never know where the focus is in an app so using the Left / Right / Up / Down / Select commands fail because you never know where the app when opened will be focused on. So rebooting the Apple Tv puts the apple back to the same place every time.
+2. Calling an app directly in a script can give you a blank screen some times that you can not recover from it. Doing it once is fine but switching back and forth confuses the Apple Tv especially if you hit menu while it is loading.
 3. So by restarting the Apple Tv will reset all apps to their default focus location and then you can navigate using Left / Right / Up / Down / Select or Call an app with a playlist directly while you are sleeping so it will have time to start properly
 
 ⠀
@@ -21,7 +22,7 @@ The problems with AppleTV are the following
 ⠀
 # My Configuration for this
 
-My configuration is 3 4K Gen-2 AppleTv's. I am running YouTubeTv. I want Apple Tv 1 to start up playing the live news, Apple Tv 2 to start up playing Weather using Fox Weather App, and Apple Tv 3 to start at the main menu. There is more to my configuration that I will explain later as I finish up some other projects.
+My configuration is 3 - 4K Gen-2 AppleTv's, running YouTubeTv. I want Apple Tv 1 to start up playing the live news, Apple Tv 2 to start up playing Weather using Fox Weather App, and Apple Tv 3 to start at the main menu.
 
 # This is my process for achieving a smooth reboot
 
@@ -51,12 +52,12 @@ My configuration is 3 4K Gen-2 AppleTv's. I am running YouTubeTv. I want Apple T
 	1. Open FOX Weather using service: media_player.play_media.
 
 ⠀
-**My automation for each Apple Tv make sure Apple Tv reloads properly**
+**Automation for each Apple Tv make sure Apple Tv reloads properly**
 1. Trigger (When) - state is unavailable
 2. Call a service "Home Assistant Core Integration: Reload config entry" for your AppleTv
 
 ⠀
-**Here is my Automation to reload device/integration if needed**
+**Automation to reload device/integration if needed**
 
 ```
 alias: MediaAuto-AppleTv1-Reload-If-Unavailable
@@ -75,7 +76,23 @@ action:
 mode: single
 ```
 
-Here is my Script for rebooting 3 Apple Tv's and setting them to New and Weather
+**Automation to start my reboot script**
+
+```
+alias: MediaAuto-1-Reboot-Apples-and-Set-First-Play
+description: ""
+trigger:
+  - platform: time
+    at: "05:30:00"
+condition: []
+action:
+  - service: script.mediascript_appletv1_reboot_sources
+    metadata: {}
+    data: {}
+mode: single
+```
+
+**Here is my Script for rebooting 3 Apple Tv's and setting them to New and Weather**
 
 ```
 alias: MediaScript-AppleTv1-Reboot-Sources
@@ -161,5 +178,3 @@ mode: single
 
 This link has information checking status of multiple entities that looks really cool
 [https://github.com/home-assistant/core/issues/90166#issuecomment-1482487713](https://github.com/home-assistant/core/issues/90166#issuecomment-1482487713)
-
-#evernote
