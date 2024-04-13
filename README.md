@@ -1,13 +1,13 @@
 # Home Assistant - AppleTv - Restart / Reboot Apple Tv and select something to watch by default #
     
-# Description
+## Description
 
 Home Assistant - Reboot Apple Tv's so they return to their main menu every morning and then start live news consistently. This method for Home Assistant will reboot the Apple TV at 5:30am and set it to the live news consistently.
 
 ![After Complete Restart Automation](https://github.com/crazy-craig/Restart-Reboot-Apple-Tv/assets/153091268/54a8c4d1-5aa2-4454-abf1-480a72c06f1d)
 
 
-# Why I did it in this method
+## Why I did it in this method
 
 The problems with AppleTV are the following:
 1. The main problem is you never know where the focus is in an app so using the Left / Right / Up / Down / Select commands fail because you never know where the app when opened will be focused on. So rebooting the Apple Tv puts the apple back to the same place every time.
